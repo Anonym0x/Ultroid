@@ -100,6 +100,36 @@ async def _(e):
     await z.edit("Done")
 
 
+@ultroid_cmd(pattern="bigshift (.*)")
+async def _(e):
+    x = e.pattern_match.group(1)
+    z = await eor(e, get_string("com_1"))
+    a, b = x.split("|")
+    try:
+        c = int(a)
+    except Exception:
+        try:
+            c = (await e.client.get_entity(a)).id
+        except Exception:
+            await z.edit(get_string("cha_1"))
+            return
+    try:
+        d = int(b)
+    except Exception:
+        try:
+            d = (await e.client.get_entity(b)).id
+        except Exception:
+            await z.edit(get_string("cha_1"))
+            return
+    async for msg in e.client.iter_messages(int(c), reverse=True):
+        try:
+            await asyncio.sleep(50)
+            await e.client.send_message(int(d), msg)
+        except BaseException:
+            pass
+    await z.edit("Done")
+
+
 @ultroid_cmd(pattern="asource (.*)")
 async def source(e):
     x = e.pattern_match.group(1)
