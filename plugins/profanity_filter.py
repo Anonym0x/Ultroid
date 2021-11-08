@@ -11,7 +11,7 @@
    If someone sends bad word in a chat, Then bot will delete that message.
 
 •`{i}remprofanity`
-   From chat from Profanity list.
+   Remove chat from Profanity list.
 
 """
 
